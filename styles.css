@@ -487,6 +487,36 @@ article.container::before{
 
 .error-content .btn-pry{margin-block-start:20px;} 
 
+@media (min-width: 640px){
+
+    
+    .search-view {clip-path:circle(3% at calc(100% - 273px) 6%);} 
+
+    /* MAIN */
+
+    
+
+    
+
+    
+
+    
+
+    .highlight-list{
+        grid-template-columns: 1fr 1fr;
+        /* height: 160px; */
+
+    }
+
+    
+
+
+    
+
+}
+
+
+
 @media (min-width: 768px){
 
     .container{padding:24px;}
