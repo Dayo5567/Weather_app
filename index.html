@@ -1,0 +1,142 @@
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather_app</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/e50ef52172.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+        extend: {
+      colors: {
+        primary: '#1E1E1E',
+        location: '#4CBB17',
+        dark: '#444444',
+        forecast: '#373636',
+        light: '#F88508',
+        second: '#443D64',
+        secondary: {
+          100: '#292929',
+          200: '#D9D9D9',
+        }
+      },
+      fontFamily: {
+        body: ['poppins']
+      }
+        },
+        },
+    }
+  </script>
+</head>
+<body class="text-gray-800 bg-white dark:bg-primary dark:text-gray-100 font-body">
+                 <!-- HEADER -->
+    <div class="header">
+        <div class="container">
+            <!-- Toggle Switch -->
+            <div class="mode">
+                <label for="check" class="bg-gray-100 w-20 h-7 rounded-full cursor-pointer relative inline-block border border-gray-700">
+                <input type="checkbox" id="check" class="sr-only peer ">
+                <span class="w-2/6 h-4/5 bg-gray-700 absolute rounded-full left-1 top-1 peer-checked:bg-gray-900 peer-checked:left-12"></span>
+                </label>
+                <p>Mode</p>
+            </div>
+             <!-- SEARCH -->
+             <div class="search-view bg-white dark:bg-primary" data-search-view>
+                <div class="search-wrapper">
+                    <input type="search" name="search" class="search-field seaching bg-white dark:bg-primary" placeholder="Search city ....." data-search-field>
+                    <i class="m-icon leading-icon fa-solid fa-magnifying-glass" data-search-field></i>
+                    <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+                        <i class="m-icon fa-solid fa-arrow-left" ></i>
+                    </button>
+                </div>
+                <div class="search-result" data-search-result>
+                    
+                </div>
+            </div>
+                    <!-- Location -->
+            <div class="header-actions">
+                <button class="icon-btn has-state bg-gray-600" aria-label="open search" data-search-toggler>
+                    <i class="m-icon fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <br><a href="#/current-location" class="btn-pry has-state bg-location" data-current-locatin-btn>
+                    <i class="m-icon fa-solid fa-location-crosshairs"></i>
+                    <span class="span">Current Location</span>
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <article class="container" data-container>
+            <div class="content-left">
+                <!-- #CURRENT WEATHER -->
+                <section class="section current-weather dark:bg-dark dark:text-secondary-200 text-secondary-100 bg-secondary-200 rounded-lg shadow-lg shadow-secondary-100" aria-label="current weather" data-current-weather>
+                    <div class="card card-lg current-weather-card dark:bg-dark dark:text-secondary-200 text-secondary-100 bg-secondary-200 rounded-lg shadow-lg shadow-secondary-100">
+                        
+                    </div>
+                </section>
+
+                <!-- FORECAST -->
+
+                <section class="section forecast" aria-label="forecast-label" data-5-day-forecast>
+                    
+                </section>
+            </div>
+
+            <div class="content-right">
+                <!-- HIGHLIGHTS -->
+                <section class="section highlights dark:bg-dark dark:text-secondary-200 text-secondary-100 bg-secondary-200 rounded-lg shadow-lg shadow-secondary-100" aria-labelledby="highlights-label" data-highlights>
+                <div class="card-lg dark:bg-dark dark:text-secondary-200 text-secondary-100 bg-secondary-200 rounded-lg shadow-lg shadow-secondary-100"></div>
+                <div class="card card-sm highlight-card two bg-white dark:bg-primary pt-20">
+                    
+                </section>
+
+                <!-- FORECAST -->
+                <section class="section hourly-forecast" aria-label="hourly-forecast" data-hourly-forecast>
+                    
+                </section>
+            </div>
+            <!---
+                        FOOTER
+                        -->
+
+                        <footer class="footer">
+                            <p class="body-3">
+                                Copyright 2023 Dayo2803. All Rights Reserved.
+                            </p>
+        
+                            <p class="body-3">
+                                Powered by <a href="https://api.openweathermap.org/api" title="Free Openweather" target="_blank" rel="noopener">
+                                    <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" width="150" height="30" alt="">
+                                </a>
+                            </p>
+                        </footer>
+        
+                    </div>
+        
+                         <div class="loading bg-white dark:bg-primary" data-loading></div> 
+        </article>
+    </main>
+
+    <-!#404 ERROR>
+
+    <section class="error-content" data-error-content>
+        <h2 class="heading">404</h2>
+        <p class="body-1">Page not found!</p>
+        <a href="#/weather?lat=51.5073219&lon=0.1276464" class="btn-pry">
+            <span class="span bg-location rounded-lg">Go Home</span>
+        </a>
+    </section>
+
+    
+    <script src="toggle.js"></script>
+    <script type="module" src="index.js"></script>
+    
+</body>
+</html>
+
