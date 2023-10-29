@@ -305,7 +305,8 @@ export const updateWeather = function (lat, lon) {
 
         const {
             weather,
-            dt, 
+            dt,
+            main: {temp, feels_like, pressure, humidity}, 
             timezone
         } = currentWeather
         const [{description, icon}] = weather;
@@ -314,6 +315,13 @@ export const updateWeather = function (lat, lon) {
         card.classList.add("card", "card-lg", "current-weather-card");
 
         card.innerHTML = `
+        <p>Feels like: <span class="title-3 font-bold">${parseInt(feels_like)}&deg;<sup>c</sup></span></p>
+
+                                        <div class="wrapper">
+                                        <p class="heading">${parseInt(temp)}&deg;<sup>c</sup></p>
+                                            <img src="assets/images/weather_icons/${icon}.png" width="64" height="64"" class="m-icon" alt="">
+                                        </div>
+                                        <h3 class="title-3">${description}</h3>
         <ul class="meta-list">
                             <li class="meta-item">
                                 <i class="m-icon fa-solid fa-location-dot"></i>
@@ -355,37 +363,22 @@ export const updateWeather = function (lat, lon) {
                             <h2 class="title-2" id="highlights-label">Todays Highlights</h2>
                             
                             <div class="highlight-list">
-                                <div class="card card-sm highlight-card one bg-white dark:bg-primary">
-                                    <div class="wrapper">
-                                        <ul class="card-list">
-                                            <li class="card-item">
-                                            <p class="heading">${parseInt(temp)}&deg;<sup>c</sup></p>
-                                            <p>Feels like: <span class="title-3 font-bold">${parseInt(feels_like)}&deg;<sup>c</sup></span></p>
-                                            </li>
-                                            <li class="card-item">
+                                        
+                                        <div class="card card-sm highlight-card bg-white dark:bg-primary">
                                                 <img src="images/sunrise.png" class="m-icon" alt="${description}">
                                             <div>
                                                 <p class="label-1">Sunrise</p>
-                                                <p class="title-1">${getTime(sunriseUnixUTC, timezone)}</p>
+                                                <p class="title-1 text-right">${getTime(sunriseUnixUTC, timezone)}</p>
                                             </div>
-                                            </li>
-                                            <li class="card-item">
+                                        </div>
+                                        <div class="card card-sm highlight-card bg-white dark:bg-primary">
                                                 <img src="images/sunset.png" class="m-icon" alt="">
                                             <div>
                                                 <p class="label-1">Sunset</p>
-                                                <p class="title-1">${getTime(sunsetUnixUTC, timezone)}</p>
+                                                <p class="title-1 text-right">${getTime(sunsetUnixUTC, timezone)}</p>
                                             </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="card card-sm highlight-card bg-white dark:bg-primary h-48">
-                                        <div class="wrapper">
-                                            <img src="assets/images/weather_icons/${icon}.png" width="64" height="64"" class="m-icon" alt="">
                                         </div>
-                                        <h3 class="title-3">${description}</h3>
-                                    </div>
-                                <div class="card card-sm highlight-card one">
+                                
                                     <div class="card card-sm highlight-card bg-white dark:bg-primary">
                                         <h3 class="title-3">Humidity</h3>
                                         <div class="wrapper">
@@ -400,8 +393,6 @@ export const updateWeather = function (lat, lon) {
                                             <p class="title-1">${pressure}<sub>hPa</sub></p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card card-sm highlight-card one">
                                     <div class="card card-sm highlight-card bg-white dark:bg-primary">
                                         <h3 class="title-3">Wind  Speed</h3>
                                         <div class="wrapper">
@@ -416,7 +407,6 @@ export const updateWeather = function (lat, lon) {
                                             <p class="title-1">${visibility / 1000}<sub>km</sub></p>
                                         </div>
                                     </div>
-                                </div>
                                 
                             </div>
             
