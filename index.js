@@ -51,13 +51,13 @@ export const url = {
 
 
 export const weekDayNames = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
+    "Sun",
+    "Mon",
+    "Tues",
+    "Wed",
+    "Thurs",
+    "Fri",
+    "Sat"
 ];
 
 export  const monthNames = [
@@ -225,7 +225,7 @@ searchField.addEventListener("input", function () {
     if (searchField.value) {
         searchTimeout = setTimeout(() => {
             fetchData(url.geo(searchField.value), function (locations) {
-                searchField.classList.remove("searching");
+               searchField.classList.remove("searching");
                 searchResult.classList.add("active");
                 searchResult.innerHTML = `
                 <ul class="view-list" data-search-list>
@@ -317,7 +317,7 @@ export const updateWeather = function (lat, lon) {
         card.innerHTML = `
         <p>Feels like: <span class="title-3 font-bold">${parseInt(feels_like)}&deg;<sup>c</sup></span></p>
 
-                                        <div class="wrapper">
+                                        <div class="weapper">
                                         <p class="heading">${parseInt(temp)}&deg;<sup>c</sup></p>
                                             <img src="assets/images/weather_icons/${icon}.png" width="64" height="64"" class="m-icon" alt="">
                                         </div>
@@ -364,49 +364,55 @@ export const updateWeather = function (lat, lon) {
                             
                             <div class="highlight-list">
                                         
-                                        <div class="card card-sm highlight-card bg-white dark:bg-primary">
-                                                <img src="images/sunrise.png" class="m-icon" alt="${description}">
-                                            <div>
-                                                <p class="label-1">Sunrise</p>
-                                                <p class="title-1 text-right">${getTime(sunriseUnixUTC, timezone)}</p>
-                                            </div>
+                                <div class="card card-sm highlight-card two bg-white dark:bg-primary">
+                                    <h3 class="title-3">Sunrise & Sunset</h3>
+                                    <div class="card-list">
+                                        <div class="card-item">
+                                            <img src="images/sunrise.png" class="m-icon" alt="${description}">
+                                                <div>
+                                                    <p class="label-1">Sunrise</p>
+                                                    <p class="title-1 text-right">${getTime(sunriseUnixUTC, timezone)}</p>
+                                                </div>                             
                                         </div>
-                                        <div class="card card-sm highlight-card bg-white dark:bg-primary">
-                                                <img src="images/sunset.png" class="m-icon" alt="">
-                                            <div>
+
+                                        <div class="card-item">
+                                        <img src="images/sunset.png" class="m-icon" alt="">
+                                                <div>
                                                 <p class="label-1">Sunset</p>
                                                 <p class="title-1 text-right">${getTime(sunsetUnixUTC, timezone)}</p>
-                                            </div>
+                                                </div>                             
                                         </div>
+                                    </div>
+                                </div>
                                 
-                                    <div class="card card-sm highlight-card bg-white dark:bg-primary">
-                                        <h3 class="title-3">Humidity</h3>
-                                        <div class="wrapper">
-                                            <img src="images/river.png" class="m-icon" alt="">
-                                            <p class="title-1">${humidity}<sub>%</sub></p>
-                                        </div>
+                                <div class="card card-sm highlight-card bg-white dark:bg-primary">
+                                    <h3 class="title-3">Humidity</h3>
+                                    <div class="wrapper">
+                                        <img src="images/river.png" class="m-icon" alt="">
+                                        <p class="title-1">${humidity}<sub>%</sub></p>
                                     </div>
-                                    <div class="card card-sm highlight-card bg-white dark:bg-primary">
-                                        <h3 class="title-3">Pressure</h3>
-                                        <div class="wrapper">
-                                            <img src="images/barometer.png" class="m-icon" alt="">
-                                            <p class="title-1">${pressure}<sub>hPa</sub></p>
-                                        </div>
+                                </div>
+                                <div class="card card-sm highlight-card bg-white dark:bg-primary">
+                                    <h3 class="title-3">Pressure</h3>
+                                    <div class="wrapper">
+                                        <img src="images/barometer.png" class="m-icon" alt="">
+                                        <p class="title-1">${pressure}<sub>hPa</sub></p>
                                     </div>
-                                    <div class="card card-sm highlight-card bg-white dark:bg-primary">
-                                        <h3 class="title-3">Wind  Speed</h3>
-                                        <div class="wrapper">
-                                            <img src="images/wind.png" class="m-icon" alt="">
-                                            <p class="title-1">${speed}<sub>KM</sub></p>
-                                        </div>
+                                </div>
+                                <div class="card card-sm highlight-card bg-white dark:bg-primary">
+                                    <h3 class="title-3">Wind  Speed</h3>
+                                    <div class="wrapper">
+                                        <img src="images/wind.png" class="m-icon" alt="">
+                                        <p class="title-1">${speed}<sub>KM</sub></p>
                                     </div>
-                                    <div class="card card-sm highlight-card bg-white dark:bg-primary">
-                                        <h3 class="title-3">UV</h3>
-                                        <div class="wrapper">
-                                            <img src="images/ultraviolet.png" class="m-icon" alt="">
-                                            <p class="title-1">${visibility / 1000}<sub>km</sub></p>
-                                        </div>
+                                </div>
+                                <div class="card card-sm highlight-card bg-white dark:bg-primary">
+                                    <h3 class="title-3">Visibility</h3>
+                                    <div class="wrapper">
+                                        <img src="images/ultraviolet.png" class="m-icon" alt="">
+                                        <p class="title-1">${visibility / 1000}<sub>km</sub></p>
                                     </div>
+                                </div>
                                 
                             </div>
             
@@ -507,7 +513,7 @@ export const updateWeather = function (lat, lon) {
                         <img src="./assets/images/weather_icons/${icon}.png" width="48" height="48" alt="" class="weather-icon">
                     </div>
                     <p class="label-1">${parseInt(temp_max)}&deg;<sup>c</sup></p>
-                    <p class="label-1">${date.getDate()} ${monthNames[date.getUTCMonth()]} ${weekDayNames[date.getUTCDay()]}</p>
+                    <p class="label-1">${date.getDate()} ${weekDayNames[date.getUTCDay()]} ${monthNames[date.getUTCMonth()]}</p>
                 
                 `;
 
