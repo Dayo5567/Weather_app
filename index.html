@@ -2,10 +2,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1E1E1E">
     <title>Weather_app</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/e50ef52172.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/sun.png">
   <script>
     tailwind.config = {
         darkMode: 'class',
@@ -146,6 +150,14 @@
 
     <script src="toggle.js"></script>
     <script type="module" src="index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator){
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+        else {
+            console.log("Service worker is not supported");
+        }
+    </script>
     
 </body>
 </html>

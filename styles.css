@@ -350,10 +350,10 @@ article.container::before{
    
 } 
 
-.highlight-list .highlight-card{
+/* .highlight-list .highlight-card{ */
     /*min-width: 210px;*/
    /* width: 100%;*/
-}
+/* } */
 
 /*.highlight-list .two{
     color: red;
